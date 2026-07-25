@@ -44,6 +44,7 @@ system.defaults = {
 	      "node"
 	      "jupyterlab"
 	      "yabai"
+	      "skhd"
 	    ];
 	    casks = [
 	      "ghostty"
