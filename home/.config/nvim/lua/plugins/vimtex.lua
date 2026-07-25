@@ -17,5 +17,20 @@ return {
         '-interaction=nonstopmode',
       },
     }
+    -- visual/conceal settings
+    vim.g.vimtex_syntax_conceal = {
+      accents = 1,
+      ligatures = 1,
+      cites = 1,
+      fancy = 1,
+      spacing = 1,
+      greek = 1,
+      math_bounds = 1,
+      sections = 1,
+      styles = 1,
+    }
+
+    vim.opt.conceallevel = 2
+    vim.opt.concealcursor = 'nc'
   end,
 }
