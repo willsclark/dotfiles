@@ -18,9 +18,7 @@ in
     nerd-fonts.hack
     texlive.combined.scheme-full
     # quarto
-    sioyek
-    obsidian
-    zotero
+    sioyek    # aliased into /Applications/Nix Apps by configuration.nix
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables.EDITOR = "nvim";

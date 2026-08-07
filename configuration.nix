@@ -1,4 +1,10 @@
-{...}:
+{ pkgs, lib, ... }:
+
+let
+  # GUI apps that come from nixpkgs rather than a cask. Spotlight and Launchpad
+  # ignore symlinks into /nix/store, so these get real macOS aliases below.
+  nixApps = with pkgs; [ sioyek ];
+in
 
 {
 # Determinate already manages the Nix daemon, so nix-daemon shouldn't
@@ -26,6 +32,16 @@ system.defaults = {
 	finder.CreateDesktop = false;
 	trackpad.Clicking = true;
 };
+
+	system.activationScripts.applications.text = lib.mkForce ''
+	  echo "setting up /Applications/Nix Apps..." >&2
+	  rm -rf "/Applications/Nix Apps"
+	  mkdir -p "/Applications/Nix Apps"
+	  for src in ${lib.concatMapStringsSep " " (p: "${p}/Applications/*.app") nixApps}; do
+	    [ -e "$src" ] || continue
+	    ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$(basename "$src")"
+	  done
+	'';
 	nix-homebrew = {
 	    enable = true;
 	    user = "willclark";
@@ -47,6 +63,8 @@ system.defaults = {
 	      "ghostty"
 	      "claude-code"
 	      "discord"
+	      "zotero"
+	      "obsidian"
 	    ];
 	  };
 }
