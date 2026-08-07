@@ -65,6 +65,7 @@ system.defaults = {
 	      "discord"
 	      "zotero"
 	      "obsidian"
+	      "nikitabobko/tap/aerospace"
 	    ];
 	  };
 }
