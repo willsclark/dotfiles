@@ -49,11 +49,7 @@ system.defaults = {
 	    casks = [
 	      "ghostty"
 	      "claude-code"
-	      "sioyek"
 	      "discord"
-	    ];
-	    taps = [
-	    "asmvik/formulae"
 	    ];
 	  };
 }

@@ -1,6 +1,3 @@
-theme = catppuccin-latte.conf
-
-
 font-family = "IosevkaTerm Nerd Font"
 font-family-italic = "IosevkaTerm Nerd Font Italic"
 font-family-bold = "IosevkaTerm Nerd Font Bold"
@@ -10,8 +7,13 @@ font-size = 16
 window-width=120
 window-height=33
 
+theme = Catppuccin Mocha
+
+# Gamma-correct the blend so text doesn't render thin/dark over transparency.
+alpha-blending = linear-corrected
+
 background-blur = macos-glass-regular
-background-opacity = 0.70
+background-opacity = 0.85
 
 unfocused-split-opacity = 0.60
 
