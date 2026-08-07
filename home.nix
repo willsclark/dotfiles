@@ -15,10 +15,12 @@ in
     jq        # json on the command line
     lazygit
     neovim
-    # the font everything renders in
     nerd-fonts.hack
     texlive.combined.scheme-full
-    quarto
+    # quarto
+    sioyek
+    obsidian
+    zotero
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables.EDITOR = "nvim";
@@ -61,7 +63,7 @@ in
   home.file.".config/herdr".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
   home.file.".config/aerospace".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/aerospace";
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/aerospace";
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
 

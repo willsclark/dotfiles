@@ -40,11 +40,8 @@ system.defaults = {
 	      "fx"
 	      "uv"
 	      "jupytext"
-	      "tesseract"
 	      "node"
 	      "jupyterlab"
-	      "yabai"
-	      "skhd"
 	    ];
 	    casks = [
 	      "ghostty"
