@@ -1,20 +1,18 @@
-theme = catppuccin-latte.conf
-
-
 font-family = "IosevkaTerm Nerd Font"
-font-family-italic = "IosevkaTerm Nerd Font Italic"
-font-family-bold = "IosevkaTerm Nerd Font Bold"
-font-family-bold-italic = "IosevkaTerm Nerd Font Bold Italic"
 font-size = 16
+font-thicken = true
 
-window-width=120
-window-height=33
+window-width = 120
+window-height = 33
+window-padding-x = 12
+window-padding-y = 10
 
+# Auto-switches based on OS dark/light mode
+theme = dark:Rose Pine Moon,light:Rose Pine Dawn
+
+alpha-blending = linear-corrected
 background-blur = macos-glass-regular
-background-opacity = 0.70
+background-opacity = 0.92
 
-unfocused-split-opacity = 0.60
-
-macos-titlebar-style="hidden"
-
-
+unfocused-split-opacity = 0.88
+macos-titlebar-style = "hidden"

@@ -1,8 +1,16 @@
-{...}:
+{ pkgs, lib, ... }:
+
+let
+  # GUI apps that come from nixpkgs rather than a cask. Spotlight and Launchpad
+  # ignore symlinks into /nix/store, so these get real macOS aliases below.
+  nixApps = with pkgs; [ sioyek ];
+in
 
 {
-# Determinate already manages the Nix daemon, so nix-daemon shouldn't
-nix.enable = false;
+# This machine runs the upstream multi-user Nix install (no Determinate),
+# so nix-darwin owns the daemon and /etc/nix/nix.conf.
+nix.enable = true;
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 nixpkgs.config.allowUnfree = true;
 nixpkgs.hostPlatform = "aarch64-darwin";
@@ -26,6 +34,16 @@ system.defaults = {
 	finder.CreateDesktop = false;
 	trackpad.Clicking = true;
 };
+
+	system.activationScripts.applications.text = lib.mkForce ''
+	  echo "setting up /Applications/Nix Apps..." >&2
+	  rm -rf "/Applications/Nix Apps"
+	  mkdir -p "/Applications/Nix Apps"
+	  for src in ${lib.concatMapStringsSep " " (p: "${p}/Applications/*.app") nixApps}; do
+	    [ -e "$src" ] || continue
+	    ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$(basename "$src")"
+	  done
+	'';
 	nix-homebrew = {
 	    enable = true;
 	    user = "willclark";
@@ -40,20 +58,16 @@ system.defaults = {
 	      "fx"
 	      "uv"
 	      "jupytext"
-	      "tesseract"
 	      "node"
 	      "jupyterlab"
-	      "yabai"
-	      "skhd"
 	    ];
 	    casks = [
 	      "ghostty"
 	      "claude-code"
-	      "sioyek"
 	      "discord"
-	    ];
-	    taps = [
-	    "asmvik/formulae"
+	      "zotero"
+	      "obsidian"
+	      "nikitabobko/tap/aerospace"
 	    ];
 	  };
 }
