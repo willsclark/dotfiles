@@ -7,8 +7,10 @@ let
 in
 
 {
-# Determinate already manages the Nix daemon, so nix-daemon shouldn't
-nix.enable = false;
+# This machine runs the upstream multi-user Nix install (no Determinate),
+# so nix-darwin owns the daemon and /etc/nix/nix.conf.
+nix.enable = true;
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 nixpkgs.config.allowUnfree = true;
 nixpkgs.hostPlatform = "aarch64-darwin";

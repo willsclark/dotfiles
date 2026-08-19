@@ -12,8 +12,8 @@ theme = dark:Rose Pine Moon,light:Rose Pine Dawn
 # Gamma-correct the blend so text doesn't render thin/dark over transparency.
 alpha-blending = linear-corrected
 
-background-blur = macos-glass-regular
-background-opacity = 0.85
+# background-blur = macos-glass-regular
+# background-opacity = 0.85
 
 unfocused-split-opacity = 0.60
 
