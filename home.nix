@@ -41,19 +41,45 @@ in
     };
   };
 
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-      format = "$directory$git_branch$git_status$cmd_duration$line_break$character";
-      character = {
-        success_symbol = "[❯](purple)";
-        error_symbol = "[❯](red)";
-      };
-      cmd_duration.format = "[$duration]($style) ";
+ programs.starship = {
+  enable = true;
+  settings = {
+    add_newline = false;
+    format = "$directory$git_branch$git_status$cmd_duration$line_break$character";
+
+    # Prevent Starship from rendering python/conda env tags
+    conda.disabled = true;
+    python.disabled = true;
+
+    directory = {
+      style = "bold #ea9a97"; # Rose
+      truncation_length = 3;
+      truncate_to_repo = true;
+      repo_root_style = "bold #ea9a97";
+    };
+
+    git_branch = {
+      symbol = " ";
+      style = "bold #c4a7e7"; # Iris
+      format = "on [$symbol$branch]($style) ";
+    };
+
+    git_status = {
+      style = "bold #eb6f92"; # Love
+      format = "([$all_status$ahead_behind]($style) )";
+    };
+
+    cmd_duration = {
+      format = "[$duration]($style) ";
+      style = "bold #f6c177"; # Gold
+    };
+
+    character = {
+      success_symbol = "[❯](bold #9ccfd8)"; # Foam
+      error_symbol = "[❯](bold #eb6f92)";   # Love
     };
   };
-
+};
   home.file.".config/ghostty".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/ghostty";
   home.file.".config/nvim".source =
