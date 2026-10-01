@@ -43,17 +43,11 @@ system.defaults = {
 	      "tesseract"
 	      "node"
 	      "jupyterlab"
-	      "yabai"
-	      "skhd"
 	    ];
 	    casks = [
 	      "ghostty"
 	      "claude-code"
-	      "sioyek"
 	      "discord"
-	    ];
-	    taps = [
-	    "asmvik/formulae"
 	    ];
 	  };
 }
